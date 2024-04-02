@@ -17,11 +17,13 @@ const links = [{
 <template>
 	<div>
 		<header class="mb-6">
-			<h1 class="flex items-end">
-				<img src="/images/_31e08299-aa5f-4684-9c9b-bc768d825587.jpeg" alt="" width="300" height="300">
-				転職探しアプリ
-				{{diagStore.name}}
-			</h1>
+			<NuxtLink to="/" class="text-7xl">
+				<h1 class="flex items-end">
+					<img src="/images/_31e08299-aa5f-4684-9c9b-bc768d825587.jpeg" alt="" width="300" height="300">
+					転職探しアプリ
+					{{diagStore.name}}
+				</h1>
+			</NuxtLink>
 		</header>
 		<NuxtPage />
 		<!--

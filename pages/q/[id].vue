@@ -1,58 +1,35 @@
 <script setup>
 const route = useRoute();
+const page_id = `/q/${route.params.id}` + (route.params.slug ? `/${route.params.slug}` : ``);
 const diagStore = useDiagnosisStore();
-console.log(diagStore.name);
-
-console.log();
-/*
-const question = diagStore.question['q/1'];
-const name = question.name;
-const options = question.options;
-*/
-
-/*
-const options = [{
-  value: 'Coding',
-  label: 'コーディング'
-}, {
-  value: 'Design',
-  label: 'デザイン'
-}, {
-  value: 'Direction',
-  label: 'ディレクション'
-}, {
-  value: 'Marketing',
-  label: 'マーケティング'
-}, {
-  value: 'Writing',
-  label: 'ライティング'
-}]
 
 const selected = ref('')
+const nextPage = computed( () => {
+	const next = diagStore.questions[page_id].options.find(e => selected.value === e.value);
+	return next !== undefined ? next.goto : '';
+})
 const goNext = computed( () => {
-	console.log(selected.value);
 	return selected.value !== '' ? true : null 
 });
-*/
 </script>
 
 <template>
-	<h2>{{diagStore.questions["/q/1"].name}}</h2>
-	hello{{route.params.id}}hello
-				{{diagStore.name}}vue
-	<!--
-	<URadioGroup v-model="selected" legend="どれか一つを選んで下さい" :options="options" />
-	-->
-	<!--
+	<h2>{{diagStore.questions[page_id].name}}</h2>
+	{{ selected }}
+	<URadioGroup
+		v-model="selected"
+		legend="どれか一つを選んで下さい"
+		:options="diagStore.questions[page_id].options"
+	/>
 	<ULink
-		to="/q2"
+		:to="nextPage"
 		active-class="text-primary"
 		:disabled="!goNext"
 		inactive-class="text-gray-500 dark:text-gray-400 hover:text-gray-700 dark:hover:text-gray-200"
 	>
 		次へ.
 	</ULink>
-	<UButton :disabled="!goNext">test</UButton>
-	-->
+<NuxtLink to="/q/2/coding">次の質問</NuxtLink>
+
 </template>
 

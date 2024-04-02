@@ -32,6 +32,27 @@ export const useDiagnosisStore = defineStore('diagnosisStore', {
 					},
 				]
 			},
+			'/q/2/coding' : {
+				name: 'test',
+				options: [
+					{
+						label: 'コーディング',
+						value: 'coding',
+						goto: '/result/designer',
+					},
+					{
+						label: 'デザイン',
+						value: 'design',
+						goto: '/q/2/design',
+					},
+				],
+			}
+		},
+		result: {
+			"/result/designer": {
+				job: 'Web制作会社',
+				text: `向いている理由...`,
+			},
 		}
 	})
 });
