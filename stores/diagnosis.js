@@ -33,7 +33,7 @@ export const useDiagnosisStore = defineStore('diagnosisStore', {
 				]
 			},
 			'/q/2/coding' : {
-				name: 'test',
+				name: '更に伸ばしたいスキルはどれですか？',
 				options: [
 					{
 						label: 'コーディング',
@@ -43,7 +43,7 @@ export const useDiagnosisStore = defineStore('diagnosisStore', {
 					{
 						label: 'デザイン',
 						value: 'design',
-						goto: '/q/2/design',
+						goto: '/result/designer',
 					},
 				],
 			}
@@ -51,7 +51,7 @@ export const useDiagnosisStore = defineStore('diagnosisStore', {
 		result: {
 			"/result/designer": {
 				job: 'Web制作会社',
-				text: `向いている理由...`,
+				text: `向いている理由...（診断理由の説明が続く）`,
 			},
 		}
 	})
